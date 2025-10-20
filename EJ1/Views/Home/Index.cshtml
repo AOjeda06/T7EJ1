@@ -1,0 +1,22 @@
+﻿@model EJ1.Models.Entities.clsPersona
+@{
+    ViewBag.Title = "Inicio";
+}
+
+<h2>@ViewData["Saludo"]</h2>
+<p>Fecha actual: @ViewBag.FechaActual</p>
+
+<h3>Datos de la persona:</h3>
+<ul>
+    <li>Nombre: @Model.Nombre</li>
+    <li>Apellidos: @Model.Apellidos</li>
+    <li>Edad: @Model.Edad años</li>
+    <li>Email: @Model.Email</li>
+</ul>
+
+<p>
+    @Html.ActionLink("Ver listado de personas", "ListadoPersonas", "Home")
+</p>
+<p>
+    @Html.ActionLink("Ver persona en posición 3", "PersonaPorPosicion", "Home")
+</p>

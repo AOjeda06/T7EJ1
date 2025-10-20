@@ -1,0 +1,32 @@
+﻿@model EJ1.Models.Entities.clsPersona
+@{
+    ViewBag.Title = "Persona en posición 3";
+}
+
+<h2>Persona en posición 3</h2>
+
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <td>@Model.Nombre</td>
+    </tr>
+    <tr>
+        <th>Apellidos</th>
+        <td>@Model.Apellidos</td>
+    </tr>
+    <tr>
+        <th>Edad</th>
+        <td>@Model.Edad</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("Volver al listado", "ListadoPersonas", "Home") 
+</p>
+<p>
+    @Html.ActionLink("Volver al inicio", "Index", "Home")
+</p>
