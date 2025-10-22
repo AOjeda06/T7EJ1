@@ -5,32 +5,36 @@
 
 <h2>Listado de personas</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>NOMBRE</th>
-            <th>APELLIDOS</th>
-            <th>EDAD</th>
-            <th>EMAIL</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var persona in Model)
-        {
+@if (Model == null || !Model.Any())
+{
+    <p>No hay personas para mostrar.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>@persona.Nombre</td>
-                <td>@persona.Apellidos</td>
-                <td>@persona.Edad</td>
-                <td>@persona.Email</td>
+                <th>NOMBRE</th>
+                <th>APELLIDOS</th>
+                <th>EDAD</th>
+                <th>EMAIL</th>
+                <th>DEPARTAMENTO</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var persona in Model)
+            {
+                <tr>
+                    <td>@persona.Nombre</td>
+                    <td>@persona.Apellidos</td>
+                    <td>@persona.Edad</td>
+                    <td>@persona.Email</td>
+                    <td>@persona.Departamento?.NombreDepartamento</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
-<p>
-    @Html.ActionLink("Volver al inicio", "Index", "Home")
-</p>
-<p>
-    @Html.ActionLink("Ver persona en posición 3", "PersonaPorPosicion", "Home")
-</p>
-
+<p>@Html.ActionLink("Volver al inicio", "Index", "Home")</p>
+<p>@Html.ActionLink("Ver persona en posición 3", "PersonaPorPosicion", "Home")</p>

@@ -12,11 +12,9 @@
     <li>Apellidos: @Model.Apellidos</li>
     <li>Edad: @Model.Edad años</li>
     <li>Email: @Model.Email</li>
+    <li>Departamento: @Model.Departamento?.NombreDepartamento</li>
 </ul>
 
-<p>
-    @Html.ActionLink("Ver listado de personas", "ListadoPersonas", "Home")
-</p>
-<p>
-    @Html.ActionLink("Ver persona en posición 3", "PersonaPorPosicion", "Home")
-</p>
+<p>@Html.ActionLink("Ver listado de personas", "ListadoPersonas", "Home")</p>
+<p>@Html.ActionLink("Ver persona en posición 3", "PersonaPorPosicion", "Home")</p>
+<p>@Html.ActionLink("Editar persona aleatoria", "EditarPersona", "Home")</p>

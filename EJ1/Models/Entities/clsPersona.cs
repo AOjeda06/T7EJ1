@@ -1,52 +1,44 @@
-﻿namespace EJ1.Models.Entities
+﻿using System.ComponentModel.DataAnnotations;
 
+namespace EJ1.Models.Entities
 {
     public class clsPersona
     {
-        public string _nombre { get; set; }
-        public string _apellidos { get; set; }
-        public int _edad { get; set; }
-        public string _email { get; set; }
-
-        // Constructor
-        public clsPersona(string nombre, string apellidos, int edad, string email)
-        {
-            _nombre = nombre;
-            _apellidos = apellidos;
-            _edad = edad;
-            _email = email;
+        public clsPersona() {
+            Nombre = string.Empty;
+            Apellidos = string.Empty;
+            Edad = 0;
+            Email = string.Empty;
+            Departamento = null;
         }
 
-        // Getters y Setters
-        public string Nombre
+        public clsPersona(string nombre, string apellidos, int edad, string email, clsDepartamento departamento)
         {
-            get { return _nombre; }
-            set { _nombre = value; }
+            Nombre = nombre;
+            Apellidos = apellidos;
+            Edad = edad;
+            Email = email;
+            Departamento = departamento;
         }
 
-        public string Apellidos
-        {
-            get { return _apellidos; }
-            set { _apellidos = value; }
-        }
+        [Required]
+        public string Nombre { get; set; }
 
-        public int Edad
-        {
-            get { return _edad; }
-            set { _edad = value; }
-        }
+        [Required]
+        public string Apellidos { get; set; }
 
-        public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
+        [Range(0, 150)]
+        public int Edad { get; set; }
 
-        // Método para mostrar la información de la persona
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        public clsDepartamento? Departamento { get; set; }
+
         public override string ToString()
         {
-            return $"Nombre: {Nombre}, Apellidos: {Apellidos}, Edad: {Edad}, Email: {Email}";
+            return $"Nombre: {Nombre}, Apellidos: {Apellidos}, Edad: {Edad}, Email: {Email}, Departamento: {Departamento?.NombreDepartamento}";
         }
     }
 }
-

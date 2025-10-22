@@ -22,11 +22,11 @@
         <th>Email</th>
         <td>@Model.Email</td>
     </tr>
+    <tr>
+        <th>Departamento</th>
+        <td>@Model.Departamento?.NombreDepartamento</td>
+    </tr>
 </table>
 
-<p>
-    @Html.ActionLink("Volver al listado", "ListadoPersonas", "Home") 
-</p>
-<p>
-    @Html.ActionLink("Volver al inicio", "Index", "Home")
-</p>
+<p>@Html.ActionLink("Volver al listado", "ListadoPersonas", "Home")</p>
+<p>@Html.ActionLink("Volver al inicio", "Index", "Home")</p>
