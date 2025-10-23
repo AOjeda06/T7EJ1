@@ -4,7 +4,18 @@ namespace EJ1.Models.Entities
 {
     public class clsPersona
     {
-        public clsPersona() {
+        #region Atributos
+        public string Nombre { get; set; }
+        public string Apellidos { get; set; }
+        public int Edad { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
+        public clsDepartamento? Departamento { get; set; }
+        #endregion
+
+        #region Constructores
+        public clsPersona()
+        {
             Nombre = string.Empty;
             Apellidos = string.Empty;
             Edad = 0;
@@ -20,25 +31,13 @@ namespace EJ1.Models.Entities
             Email = email;
             Departamento = departamento;
         }
+        #endregion
 
-        [Required]
-        public string Nombre { get; set; }
-
-        [Required]
-        public string Apellidos { get; set; }
-
-        [Range(0, 150)]
-        public int Edad { get; set; }
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        public clsDepartamento? Departamento { get; set; }
-
+        #region Funciones y Métodos
         public override string ToString()
         {
             return $"Nombre: {Nombre}, Apellidos: {Apellidos}, Edad: {Edad}, Email: {Email}, Departamento: {Departamento?.NombreDepartamento}";
         }
+        #endregion
     }
 }

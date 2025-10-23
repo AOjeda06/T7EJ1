@@ -5,6 +5,7 @@ namespace EJ1.Models.DAL
 {
     public static class clsListadoPersonasDAL
     {
+        #region Funciones y Métodos
         public static List<clsDepartamento> ObtenerListadoDepartamentos()
         {
             return new List<clsDepartamento>
@@ -19,7 +20,7 @@ namespace EJ1.Models.DAL
 
         public static List<clsPersona> ObtenerListadoPersonas()
         {
-            var deps = ObtenerListadoDepartamentos();
+            List<clsDepartamento> deps = ObtenerListadoDepartamentos();
             return new List<clsPersona>
             {
                 new clsPersona("Ana", "Gómez López", 25, "ana.gomez@example.com", deps[0]),
@@ -30,5 +31,16 @@ namespace EJ1.Models.DAL
                 new clsPersona("Diego", "Romero Castillo", 36, "diego.romero@example.com", deps[4])
             };
         }
+
+        public static clsPersona? ObtenerPersonaPorPosicion(int posicion)
+        {
+            List<clsPersona> listado = ObtenerListadoPersonas();
+            if (listado != null && posicion >= 0 && posicion < listado.Count)
+            {
+                return listado[posicion];
+            }
+            return null;
+        }
+        #endregion
     }
 }
