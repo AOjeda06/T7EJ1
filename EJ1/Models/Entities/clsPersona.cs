@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// File: Models/Entities/clsPersona.cs
+using System.ComponentModel.DataAnnotations;
 
 namespace EJ1.Models.Entities
 {
@@ -10,7 +11,8 @@ namespace EJ1.Models.Entities
         public int Edad { get; set; }
         [EmailAddress]
         public string Email { get; set; }
-        public clsDepartamento? Departamento { get; set; }
+        // Cambio: almacenar ahora el Id del departamento en lugar del objeto Departamento
+        public int? DepartamentoId { get; set; }
         #endregion
 
         #region Constructores
@@ -20,23 +22,24 @@ namespace EJ1.Models.Entities
             Apellidos = string.Empty;
             Edad = 0;
             Email = string.Empty;
-            Departamento = null;
+            DepartamentoId = null;
         }
 
-        public clsPersona(string nombre, string apellidos, int edad, string email, clsDepartamento departamento)
+        public clsPersona(string nombre, string apellidos, int edad, string email, int? departamentoId)
         {
             Nombre = nombre;
             Apellidos = apellidos;
             Edad = edad;
             Email = email;
-            Departamento = departamento;
+            DepartamentoId = departamentoId;
         }
         #endregion
 
         #region Funciones y Métodos
         public override string ToString()
         {
-            return $"Nombre: {Nombre}, Apellidos: {Apellidos}, Edad: {Edad}, Email: {Email}, Departamento: {Departamento?.NombreDepartamento}";
+            // Dejar solo el Id en la representación; el nombre de departamento puede resolverse por quien muestre la entidad
+            return $"Nombre: {Nombre}, Apellidos: {Apellidos}, Edad: {Edad}, Email: {Email}, DepartamentoId: {DepartamentoId}";
         }
         #endregion
     }

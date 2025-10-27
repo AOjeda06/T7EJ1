@@ -1,4 +1,5 @@
-﻿namespace EJ1.Models.Entities
+﻿// File: Models/Entities/clsDepartamento.cs
+namespace EJ1.Models.Entities
 {
     public class clsDepartamento
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿// File: Models/ViewModels/EditarPersonaVM.cs
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,7 +18,6 @@ namespace EJ1.Models.ViewModels
 
             if (listado.Count > 0)
             {
-                // uso de _rnd para evitar reseeding frecuente
                 Persona = listado.ElementAt(_rnd.Next(listado.Count));
             }
             else
@@ -25,9 +25,14 @@ namespace EJ1.Models.ViewModels
                 Persona = new clsPersona();
             }
 
-            Departamentos = new List<clsDepartamento>();
-            DepartamentoIdSeleccionado = Persona?.Departamento?.IdDepartamento;
+            // ✅ Aquí se carga el listado de departamentos desde la clase que mencionaste
+            Departamentos = clsListadoPersonasDAL.ObtenerListadoDepartamentos() ?? new List<clsDepartamento>();
+
+            // Ajuste: asignar el Id del departamento desde la persona
+            DepartamentoIdSeleccionado = Persona?.DepartamentoId;
         }
+
+
 
         public clsPersona Persona { get; set; }
         public IEnumerable<clsDepartamento> Departamentos { get; set; }

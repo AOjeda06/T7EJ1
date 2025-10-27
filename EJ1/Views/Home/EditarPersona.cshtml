@@ -31,8 +31,7 @@
     <div class="form-group">
         <label>Departamento</label>
 
-        @Html.DropDownListFor(m => m.DepartamentoIdSeleccionado, Model.DepartamentosSelectList, 
-        Model.Persona?.Departamento?.NombreDepartamento ?? "Seleccione departamento", new { @class = "form-control" })
+        @Html.DropDownListFor(m => vm.Persona.DepartamentoId, vm.DepartamentosSelectList, "Seleccione departamento", new { @class = "form-control" })
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar</button>

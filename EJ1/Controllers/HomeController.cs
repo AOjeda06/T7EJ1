@@ -1,3 +1,4 @@
+// File: Controllers/HomeController.cs
 using EJ1.Models.DAL;
 using EJ1.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +21,8 @@ namespace EJ1.Controllers
             Random rnd = new Random();
             clsDepartamento? departamentoRandom = departamentos[rnd.Next(departamentos.Count)];
 
-            clsPersona persona = new clsPersona("Andrés", "Ojeda Rodríguez", 19, "andres.ojeda@iesnervion.es", departamentoRandom);
+            // Ahora se crea la persona pasando el Id del departamento en lugar del objeto
+            clsPersona persona = new clsPersona("Andrés", "Ojeda Rodríguez", 19, "andres.ojeda@iesnervion.es", departamentoRandom?.IdDepartamento);
 
             ViewData["Saludo"] = saludo;
             ViewBag.FechaActual = DateTime.Now.ToLongDateString();

@@ -1,4 +1,5 @@
-﻿@model EJ1.Models.Entities.clsPersona
+﻿@* File: Views/Home/PersonaPorPosicion.cshtml *@
+@model EJ1.Models.Entities.clsPersona
 @{
     ViewBag.Title = "Persona en posición 3";
 }
@@ -24,7 +25,13 @@
     </tr>
     <tr>
         <th>Departamento</th>
-        <td>@Model.Departamento?.NombreDepartamento</td>
+        <td>
+            @{
+                var deptName = EJ1.Models.DAL.clsListadoPersonasDAL.ObtenerListadoDepartamentos()
+                .FirstOrDefault(d => d.IdDepartamento == Model.DepartamentoId)?.NombreDepartamento;
+                @deptName
+            }
+        </td>
     </tr>
 </table>
 

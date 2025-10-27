@@ -1,4 +1,5 @@
-﻿@model EJ1.Models.Entities.clsPersona
+﻿@* File: Views/Home/Index.cshtml *@
+@model EJ1.Models.Entities.clsPersona
 @{
     ViewBag.Title = "Inicio";
 }
@@ -12,7 +13,13 @@
     <li>Apellidos: @Model.Apellidos</li>
     <li>Edad: @Model.Edad años</li>
     <li>Email: @Model.Email</li>
-    <li>Departamento: @Model.Departamento?.NombreDepartamento</li>
+    <li>
+        Departamento: @{
+        var deptName = EJ1.Models.DAL.clsListadoPersonasDAL.ObtenerListadoDepartamentos()
+        .FirstOrDefault(d => d.IdDepartamento == Model.DepartamentoId)?.NombreDepartamento;
+        @deptName
+                }
+    </li>
 </ul>
 
 <p>@Html.ActionLink("Ver listado de personas", "ListadoPersonas", "Home")</p>
